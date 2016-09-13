@@ -8,8 +8,8 @@ namespace NameOf {
   class Program {
     static void Main(string[] args) {
       // nameof can accept a fully qualified type name, but it'll only return
-      // the last part of it (here: "ICollection")
-      Console.WriteLine(nameof(System.Collections.Generic.ICollection));
+      // the last part of it (here: "ICollection<string>")
+      Console.WriteLine(nameof(System.Collections.Generic.ICollection<string>));
 
       // we can refer to methods as well:
       Console.WriteLine(nameof(Console.WriteLine));

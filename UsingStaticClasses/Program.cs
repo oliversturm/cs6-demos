@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UsingStaticClasses {
-  using System.Console;
+  using static System.Console;
 
   // be sure to declare the class "static" if you'd like to be able
   // to use it with a using statement
-  using Helpers;
+  using static Helpers;
 
-  using System.Linq.Enumerable;
+  using static System.Linq.Enumerable;
 
   class Program {
 
@@ -27,16 +27,12 @@ namespace UsingStaticClasses {
       var range = Range(10, 20);
 
       // Where is an extension method, but is called like a basic static 
-      // function here. The docs show/used to say(?) that this will NOT work in the 
-      // future, but it does now (CTP 3, VS 2015 Pre).
-      // According to the docs, this call will require full namespace
-      // qualification in the future:
-      // System.Linq.Enumerable.Where(...)
-      var oddNumbers = Where(range, x => x % 2 == 1);
+      // function here. This call  requires full namespace
+      // qualification:
+      var oddNumbers = System.Linq.Enumerable.Where(range, x => x % 2 == 1);
 
-      // Using Where as an extension method is possible now (the extension
-      // is brought into scope by the using statement) and will remain
-      // possible in the future.
+      // Using Where as an extension method is possible (the extension
+      // is brought into scope by the using statement) 
       var oddNumbers_ = range.Where(x => x % 2 == 1);
 
     }

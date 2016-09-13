@@ -12,13 +12,13 @@ namespace ExceptionFilters {
       }
       // The docs call this abuse of the exception filter feature 
       // "common and accepted". Fair enough.
-      catch (Exception e) if (Log(e)) { }
+      catch (Exception e) when (Log(e)) { }
       // Only if the "if" block evaluates to "true", the catch block will be 
       // executed. So no need to catch, check and rethrow.
-      catch (ArgumentException e) if (e.Message == "the end is nigh") {
+      catch (ArgumentException e) when (e.Message == "the end is nigh") {
         Console.WriteLine("Won't catch this exception");
       }
-      catch (ArgumentException e) if (e.Message == "message") {
+      catch (ArgumentException e) when (e.Message == "message") {
         Console.WriteLine("Caught an exception");
         Console.WriteLine(e.StackTrace);
       }
